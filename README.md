@@ -1,4 +1,4 @@
-# Math Dictation Tool
+# whisper-latex-dictation
 
 A Rust-based CLI application that uses local Whisper transcription and global keyboard structural hints to dictate mathematical formulas into LaTeX.
 
@@ -57,4 +57,3 @@ export GEMINI_API_KEY="your-api-key-here"
 ## Build Notes
 - **Whisper-RS**: This crate links against `whisper.cpp`. The build script handles most of this, but ensure you have `clang` and `llvm` installed.
 - **Keyboard Hook**: The `rdev` crate requires permissions to listen to global events. On some Linux setups, you might need to add your user to the `input` group or run as root.
-# whisper-latex-dictation
