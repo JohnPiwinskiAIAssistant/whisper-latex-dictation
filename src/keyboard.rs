@@ -1,4 +1,4 @@
-use rdev::{listen, Event, EventType, Key};
+use rdev::{listen, EventType, Key};
 use std::sync::mpsc::Sender;
 use std::thread;
 use chrono::Utc;
@@ -22,7 +22,7 @@ pub fn start_keyboard_listener(tx: Sender<KeyEvent>) {
                     Key::Comma => Some("}"),
                     Key::KeyO => Some("^"),
                     Key::KeyL => Some("_"),
-                    Key::Semicolon => Some("\\\\"),
+                    Key::SemiColon => Some("\\\\"),
                     _ => None,
                 };
 
