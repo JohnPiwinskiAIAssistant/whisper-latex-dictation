@@ -40,7 +40,7 @@ async fn main() -> Result<()> {
 
     println!("Listening... Press Ctrl+C to stop.");
 
-    let mut running = Arc::new(Mutex::new(true));
+    let running = Arc::new(Mutex::new(true));
     let r = Arc::clone(&running);
     
     tokio::spawn(async move {

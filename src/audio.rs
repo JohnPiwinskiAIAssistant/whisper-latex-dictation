@@ -1,6 +1,5 @@
 use cpal::traits::{DeviceTrait, HostTrait, StreamTrait};
 use std::sync::{Arc, Mutex};
-use std::time::Duration;
 
 pub struct AudioBuffer {
     data: Arc<Mutex<Vec<f32>>>,
@@ -27,11 +26,11 @@ pub fn start_audio_capture(audio_buffer: Arc<Mutex<Vec<f32>>>) -> anyhow::Result
         .ok_or_else(|| anyhow::anyhow!("No input device found"))?;
 
     let config = device.default_input_config()?;
-    let sample_rate = config.sample_rate().0;
+    let _sample_rate = config.sample_rate().0;
     let channels = config.channels() as usize;
     
     // Whisper expects 16kHz
-    let target_sample_rate = 16000;
+    let _target_sample_rate = 16000;
 
     println!("Input device: {}", device.name()?);
     println!("Default config: {:?}", config);

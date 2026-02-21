@@ -35,13 +35,14 @@ impl GeminiClient {
             tools: vec![],
             safety_settings: vec![],
             generation_config: None,
-            #[cfg(feature = "beta")]
-            system_instruction: None,
         };
 
         // Post the request to the Gemini API (timeout 30s)
-        let response = self.client.post(30, &txt_request).await
+        let post_result = self.client.post(30, &txt_request).await
             .map_err(|e| anyhow::anyhow!("Gemini API error: {:?}", e))?;
+
+        let response = post_result.rest()
+            .ok_or_else(|| anyhow::anyhow!("Expected REST response from Gemini, got something else"))?;
 
         // Extract the text from the response
         let latex = response.candidates.get(0)
